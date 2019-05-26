@@ -2,7 +2,8 @@
 
 This repository contains a set of easy-to-use tools for training, evaluating and using neural WSD models. 
 This is the implementation used in the article [Sense Vocabulary Compression through the Semantic Knowledge of WordNet for Neural Word Sense Disambiguation](https://arxiv.org/abs/1905.05677), written by Loïc Vial, Benjamin Lecouteux and Didier Schwab.
-** The difference is to add file input decoder only.
+
+** The difference is to add file input decoder only. Maybe, original codes have the same code and I have a big problem that I don't have the experience I send a pull request. 
 
 **/!\ The current version of this repository does not support yet BERT embeddings, ELMo embeddings, and Transformer encoders, but it will be available soon ! (the code is being cleaned in private first ;))**
 
