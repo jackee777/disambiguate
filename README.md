@@ -2,6 +2,7 @@
 
 This repository contains a set of easy-to-use tools for training, evaluating and using neural WSD models. 
 This is the implementation used in the article [Sense Vocabulary Compression through the Semantic Knowledge of WordNet for Neural Word Sense Disambiguation](https://arxiv.org/abs/1905.05677), written by Loïc Vial, Benjamin Lecouteux and Didier Schwab.
+** The difference is to add file input decoder only.
 
 **/!\ The current version of this repository does not support yet BERT embeddings, ELMo embeddings, and Transformer encoders, but it will be available soon ! (the code is being cleaned in private first ;))**
 
@@ -35,6 +36,10 @@ Once the data are downloaded and extracted, you can use the following commands (
 - `./decode.sh --data_path $DATADIR --weights $DATADIR/model_weights_wsd`
 
   This script allows to disambiguate raw text from the standard input to the standard output
+
+- `./decode_file.sh --data_path semcor_wngt_reduced  --weights semcor_wngt_reduced/model_weights_wsd --input_file text/test_input.txt --output_file text/test_output.txt`
+
+  This script allows to disambiguate raw text from the file input to the file output
 
 - `./evaluate.sh --data_path $DATADIR --weights $DATADIR/model_weights_wsd --corpus [UFSAC corpus]...` 
 
