@@ -6,7 +6,7 @@ from typing import List
 
 def get_vocabulary_size(vocabulary_file_path):
     vocabulary_size = 0
-    vocabulary_file = open(vocabulary_file_path)
+    vocabulary_file = open(vocabulary_file_path, "r", encoding="utf8")
     for _ in vocabulary_file:
         vocabulary_size += 1
     vocabulary_file.close()
@@ -14,7 +14,7 @@ def get_vocabulary_size(vocabulary_file_path):
 
 
 def get_embeddings_size(embeddings_file_path):
-    f = open(embeddings_file_path)
+    f = open(embeddings_file_path, "r", encoding="utf8")
     line = f.readline()
     embeddings_size = len(line.split()[1:])
     f.close()
@@ -22,7 +22,7 @@ def get_embeddings_size(embeddings_file_path):
 
 
 def load_vocabulary(vocabulary_file_path):
-    vocabulary_file = open(vocabulary_file_path)
+    vocabulary_file = open(vocabulary_file_path, "r", encoding="utf8")
     vocabulary = []
     for line in vocabulary_file:
         vocabulary.append(line.split()[1])
@@ -37,7 +37,7 @@ def get_pretrained_embeddings(pretrained_model_path):
     embeddings[0] = np.zeros(embeddings_size)  # <padding> = 0
     embeddings[1] = np.zeros(embeddings_size)  # <unknown> = 1
     i = 2
-    f = open(pretrained_model_path)
+    f = open(pretrained_model_path, "r", encoding="utf8")
     for line in f:
         vector = line.split()[1:]
         vector = [float(i) for i in vector]
@@ -72,7 +72,7 @@ def read_sample_z_from_string(string):
 
 
 def read_all_samples_from_file(file_path):
-    file = open(file_path, "r")
+    file = open(file_path, "r", encoding="utf8")
     samples = []
     sample_triplet = []
     i = 0
@@ -187,26 +187,26 @@ def save_training_info(file_path, current_ensemble, current_epoch, current_batch
             "current_best_wsd":current_best_wsd,
             "current_best_loss":current_best_loss,
             }
-    file = open(file_path, "w")
+    file = open(file_path, "w", encoding="utf8")
     json.dump(info, file)
     file.close()
 
 
 def load_training_info(file_path):
-    file = open(file_path, "r")
+    file = open(file_path, "r", encoding="utf8")
     info = json.load(file)
     file.close()
     return info["current_ensemble"], info["current_epoch"], info["current_batch"], info["train_line"], info["current_best_wsd"], info["current_best_loss"]
 
 
 def save_training_losses(file_path, train_loss, dev_loss, dev_wsd):
-    file = open(file_path, "a")
+    file = open(file_path, "a", encoding="utf8")
     file.write(str(train_loss) + " " + str(dev_loss) + " " + str(dev_wsd) + "\n")
     file.close()
 
 
 def load_training_losses(file_path):
-    file = open(file_path, "r")
+    file = open(file_path, "r", encoding="utf8")
     train_losses = []
     dev_losses = []
     dev_wsd = []
